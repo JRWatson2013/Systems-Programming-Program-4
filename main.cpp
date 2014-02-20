@@ -26,8 +26,8 @@ inline vector<string> split(string s, string delim)
 	splitString.push_back(s.substr(start));
 	return splitString;
 }
-
-inline string strip(string s, const char toRemove)
+/*
+inline string strip(string s, const char toRemove) 
 {
 	string stripped = s;
 	string::iterator it;
@@ -38,8 +38,21 @@ inline string strip(string s, const char toRemove)
 	}
 	return stripped;
 }
+*/
+ //Author: Jacob Watson/JRWatson
+inline string strip(string input, const char Remover)
+{
+  string pulledOut = input; //holds string to be stripped out
+  string::iterator it; //calls iterator it
+  while(pulledOut.find(Remover) != string::npos) //while loop continues while pulledOut contains unwanted characters, and removes them from pulledOut
+    {
+      pulledOut.erase(it+pulledOut.find(Remover));
+    }
+  return pulledOut;
+}
 
-inline string stripSet(string s, const string toRemove)
+//Author this
+/* inline string stripSet(string s, const string toRemove)
 {
 	string stripped = s;
 	for(size_t i = 0; i < toRemove.size(); ++i)
@@ -48,7 +61,19 @@ inline string stripSet(string s, const string toRemove)
 	}
 	return stripped;
 }
+*/
+ //Author: Jacob Watson/JRWatson
+inline string stripSet(string input, const string Remover)
+{
+  string pulledOut = input; //holds string to stripped out
+  for(size_t i = 0; i < Remover.size(); i++) //calls strip on each character in pulledout
+    {
+      pulledOut = strip(pulledout,Remover[i]);
+    }
+  return pulledOut;
+}
 
+//Author this
 inline void toLowerCase(string& s)
 {
 	for(size_t i = 0; i < s.size(); ++i)
